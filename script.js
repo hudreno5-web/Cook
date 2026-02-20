@@ -1,13 +1,26 @@
 
-
-// 1. Pinch-to-zoom block karne ke liye (Multi-touch)
+// 1. Prevent Pinch-to-Zoom (Touchscreens)
 document.addEventListener('touchstart', function (event) {
     if (event.touches.length > 1) {
         event.preventDefault();
     }
 }, { passive: false });
 
-// 2. Double-tap to zoom block karne ke liye
+// THIS IS THE MISSING PIECE: Block the actual zooming movement
+document.addEventListener('touchmove', function (event) {
+    if (event.touches.length > 1) {
+        event.preventDefault();
+    }
+}, { passive: false });
+
+// Block trackpad pinch-to-zoom (Ctrl + scroll)
+document.addEventListener('wheel', function (event) {
+    if (event.ctrlKey) {
+        event.preventDefault();
+    }
+}, { passive: false });
+
+// 2. Prevent Double-Tap to Zoom
 let lastTouchEnd = 0;
 document.addEventListener('touchend', function (event) {
     const now = (new Date()).getTime();
