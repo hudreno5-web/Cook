@@ -1,0 +1,23 @@
+{
+  "name": "Chef Master AI",
+  "short_name": "Chef AI",
+  "description": "Your professional AI Cooking Partner",
+  "start_url": "/L.html",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#6750A4",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "Chefcon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any" 
+    },
+    {
+      "src": "Chefcon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
