@@ -2371,3 +2371,49 @@ function showMaterialToast(message) {
         toast.classList.remove('show-toast');
     }, 2000);
 }
+
+
+
+
+// --- ADVANCED PWA INSTALL LOGIC ---
+let deferredPrompt;
+const installBtn = document.getElementById('install-pwa-btn');
+
+// Browser check karega ki app installable hai ya nahi
+window.addEventListener('beforeinstallprompt', (e) => {
+    // Chrome ka default prompt roko
+    e.preventDefault();
+    // Event ko save karo taaki baad mein trigger kar sakein
+    deferredPrompt = e;
+    
+    // Apna custom button show karo
+    installBtn.style.display = 'block';
+    console.log("PWA Install Ready!");
+});
+
+// Jab user hamare Install button par click kare
+installBtn.addEventListener('click', async () => {
+    if (deferredPrompt) {
+        // Browser ka default install prompt show karo
+        deferredPrompt.prompt();
+        
+        // Wait karo user ke response ka (Install ya Cancel)
+        const { outcome } = await deferredPrompt.userChoice;
+        console.log(`User response to the install prompt: ${outcome}`);
+        
+        // Prompt use ho gaya, ab isko null kar do
+        deferredPrompt = null;
+        
+        // Button ko wapas hide kar do
+        installBtn.style.display = 'none';
+    }
+});
+
+// Agar user ne app successfully install kar liya hai
+window.addEventListener('appinstalled', () => {
+    installBtn.style.display = 'none';
+    deferredPrompt = null;
+    showMaterialToast("App installed successfully! 🎉"); // Hamara banaya hua toast
+    console.log('PWA was installed');
+});
+
