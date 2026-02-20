@@ -1,7 +1,5 @@
-// Cache ka naam aur version. Jab bhi app update karein, isko 'v2', 'v3' kar dein.
-const CACHE_NAME = 'chef-ai-v2'; 
 
-// Woh files jo offline chalane ke liye zaroori hain
+const CACHE_NAME = 'chef-ai-v2'; 
 const ASSETS_TO_CACHE = [
     '/',
     '/index.html',
