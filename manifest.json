@@ -2,7 +2,7 @@
   "name": "Chef Master AI",
   "short_name": "Chef AI",
   "description": "Your professional AI Cooking Partner",
-  "start_url": "/index.html",
+  "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#FFFFFF",
   "theme_color": "#6750A4",
