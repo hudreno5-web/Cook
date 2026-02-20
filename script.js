@@ -2327,9 +2327,14 @@ document.onkeydown = function(e) {
 // --- APP INITIALIZATION & SERVICE WORKER ---
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/service-worker.js')
-            .then(reg => console.log('Service Worker Registered'))
-            .catch(err => console.log('Service Worker Failed', err));
+        // Aapki file ka naam 'sw.js' hai, isliye yahan wahi hona chahiye
+        navigator.serviceWorker.register('sw.js')
+            .then(registration => {
+                console.log('Chef AI: Service Worker registered successfully with scope:', registration.scope);
+            })
+            .catch(error => {
+                console.error('Chef AI: Service Worker registration failed:', error);
+            });
     });
 }
 
