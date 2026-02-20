@@ -1,3 +1,29 @@
+
+
+// 1. Pinch-to-zoom block karne ke liye (Multi-touch)
+document.addEventListener('touchstart', function (event) {
+    if (event.touches.length > 1) {
+        event.preventDefault();
+    }
+}, { passive: false });
+
+// 2. Double-tap to zoom block karne ke liye
+let lastTouchEnd = 0;
+document.addEventListener('touchend', function (event) {
+    const now = (new Date()).getTime();
+    if (now - lastTouchEnd <= 300) {
+        event.preventDefault();
+    }
+    lastTouchEnd = now;
+}, false);
+
+
+
+
+
+
+
+
 // --- CHAT SESSION MANAGEMENT ---
 let chatSessions = JSON.parse(localStorage.getItem('chatSessions')) || [];
 let currentSessionId = null; 
