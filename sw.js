@@ -1,5 +1,5 @@
 
-const CACHE_NAME = 'chef-ai-v12'; 
+const CACHE_NAME = 'chef-Ai-v12.1'; 
 const ASSETS_TO_CACHE = [
     '/',
     '/index.html',
